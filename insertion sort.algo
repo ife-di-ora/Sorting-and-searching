@@ -1,7 +1,7 @@
 ALGORITHM insertion_sort
 VAR
     i, j, n, temp : INTEGER
-    data : ARRAY_OF INTEGER[100];  // limit sort size to 100 numbers
+    arr : ARRAY_OF INTEGER[100];  // limit sort size to 100 numbers
 BEGIN
 
     // get how many numbers to be sorted betweeen 1 and 100
@@ -13,21 +13,21 @@ BEGIN
     // get numbers to be sorted
     Write ("Enter numbers to be sorted one after another:")
     FOR i FROM 0 TO n-1 STEP 1  DO
-        Read (data[i])
+        Read (arr[i])
     END_FOR
 
     // commence insertion sorting
     // starting from the second item in the array, loop through till the last item
-    FOR i FROM 1 TO data.length - 1 STEP 1  DO
-        temp = data[i]                              // assign the selected ith item to a temporary location
+    FOR i FROM 1 TO n - 1 STEP 1  DO
+        temp = arr[i]                              // assign the selected ith item to a temporary location
         FOR j FROM i-1 TO 0 STEP step  -1           // starting from the item to the left of the selected ith item loop through till the first item
-            IF (temp < data[j]) THEN                 // check if the ith item put in a temporary storage is smaller than the current jth item
-                data[j+1] = data[j]                 // if the temp is smaller, move the jth item one step to the right
-                data [j] = temp                     // then move the temp item into the j-th location
+            IF (temp < arr[j]) THEN                 // check if the ith item put in a temporary storage is smaller than the current jth item
+                arr[j+1] = arr[j]                 // if the temp is smaller, move the jth item one step to the right
+                arr [j] = temp                     // then move the temp item into the j-th location
             ELSE
                 BREAK;                              // If temp is larger than jth item, then break out of inner loop
             END_IF
         END_FOR
     END_FOR
-    Write (data)                                    // Print out sorted array
+    Write (arr)                                    // Print out sorted array
 END
